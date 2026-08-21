@@ -1,0 +1,13 @@
+bin/
+bot
+data/
+*.sqlite
+*.sqlite-journal
+logs/
+*.log
+.git
+.gitignore
+.env
+.env.local
+.DS_Store
+lavalink/plugins/

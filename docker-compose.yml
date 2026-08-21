@@ -1,0 +1,39 @@
+services:
+  lavalink:
+    image: ghcr.io/lavalink-devs/lavalink:4
+    container_name: musician-lavalink
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      - _JAVA_OPTIONS=-Xmx1G
+    volumes:
+      - ./lavalink/application.yml:/opt/Lavalink/application.yml
+      - ./lavalink/plugins:/opt/Lavalink/plugins
+    ports:
+      - "2333:2333"
+    networks:
+      - musician-net
+
+  musician-bot:
+    build: .
+    container_name: musician-bot-v2
+    restart: unless-stopped
+    depends_on:
+      - lavalink
+    env_file:
+      - .env
+    environment:
+      - LAVALINK_HOST=lavalink:2333
+      - LAVALINK_PASSWORD=youshallnotpass
+      - DATABASE_PATH=/app/data/database.sqlite
+      - BANNER_PATH=/app/assets/banner.png
+      - PLACEHOLDER_PATH=/app/assets/placeholder.png
+    volumes:
+      - ./data:/app/data
+    networks:
+      - musician-net
+
+networks:
+  musician-net:
+    driver: bridge
