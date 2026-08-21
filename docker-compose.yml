@@ -9,6 +9,9 @@ services:
       - _JAVA_OPTIONS=-Xmx1G
       - SERVER_PORT=2333
       - LAVALINK_SERVER_PASSWORD=${LAVALINK_PASSWORD:-youshallnotpass}
+      - YOUTUBE_REFRESH_TOKEN=${YOUTUBE_REFRESH_TOKEN:-}
+      - SPOTIFY_CLIENT_ID=${SPOTIFY_CLIENT_ID:-}
+      - SPOTIFY_CLIENT_SECRET=${SPOTIFY_CLIENT_SECRET:-}
     volumes:
       - lavalink-plugins:/opt/Lavalink/plugins
     ports:
@@ -25,8 +28,12 @@ services:
     env_file:
       - .env
     environment:
+      - DISCORD_TOKEN=${DISCORD_TOKEN:-}
+      - ADMIN_USER_IDS=${ADMIN_USER_IDS:-}
       - LAVALINK_HOST=lavalink:2333
-      - LAVALINK_PASSWORD=youshallnotpass
+      - LAVALINK_PASSWORD=${LAVALINK_PASSWORD:-youshallnotpass}
+      - SPOTIFY_CLIENT_ID=${SPOTIFY_CLIENT_ID:-}
+      - SPOTIFY_CLIENT_SECRET=${SPOTIFY_CLIENT_SECRET:-}
       - DATABASE_PATH=/app/data/database.sqlite
       - BANNER_PATH=/app/assets/banner.png
       - PLACEHOLDER_PATH=/app/assets/placeholder.png

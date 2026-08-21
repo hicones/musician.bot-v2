@@ -57,17 +57,14 @@ plugins:
     oauth:
       enabled: true
       refreshToken: "${YOUTUBE_REFRESH_TOKEN:}"
-      skipInitialization: true
     clients:
-      - TV
       - MUSIC
       - ANDROID_VR
       - ANDROID_MUSIC
-      - WEBEMBEDDED
-      - TVHTML5_SIMPLY
       - WEB
       - MWEB
       - IOS
+      - TVHTML5_SIMPLY
 
   lavasrc:
     providers:
