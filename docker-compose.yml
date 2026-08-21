@@ -7,7 +7,6 @@ services:
       - .env
     environment:
       - _JAVA_OPTIONS=-Xmx1G
-      - SPRING_CONFIG_LOCATION=file:/opt/Lavalink/application.yml
     volumes:
       - ./lavalink/application.yml:/opt/Lavalink/application.yml
       - ./lavalink/plugins:/opt/Lavalink/plugins
